@@ -15,8 +15,7 @@ class ExecCall extends Call {
   }
 }
 
-from Call c, Name name
-where name.getId() = "exec" and
-  c.getFunc() = name and
+from Call c
+where c instanceof ExecCall and
   c.getLocation().getFile().getRelativePath().regexpMatch("examples/flask/.*")
 select c, "call to 'exec'."
