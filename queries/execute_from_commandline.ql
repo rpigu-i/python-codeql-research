@@ -2,7 +2,7 @@
  * @name Django Avoid execute_from_command_line
  * @kind problem
  * @problem.severity warning
- * @id python/example/execute_from_command_line
+ * @id python/queries/execute_from_command_line
  */
 
 import python
