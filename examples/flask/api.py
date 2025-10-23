@@ -2,11 +2,16 @@ import re
 import os
 import subprocess
 from flask import Flask, request
+from django.db import connection, models
+from django.db.models.expressions import RawSQL
 
 app = Flask(__name__)
 
 
 # A badly designed Admin API
+class User(models.Model):
+    pass
+
 @app.route("/executecode")
 def code_execution():
     """
@@ -34,3 +39,9 @@ def filelist_advanced():
     files = request.args.get('files', '')
     subprocess.Popen("ls al " + files, shell=True)
 
+
+@app.route("/users/<user>")
+def get_user():
+    user = request.args.get("user")
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM users WHERE username = '%s'" % username)
