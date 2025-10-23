@@ -44,4 +44,4 @@ def filelist_advanced():
 def get_user():
     user = request.args.get("user")
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM users WHERE username = '%s'" % username)
+        cursor.execute("SELECT * FROM users WHERE username = '%s'" % user)
